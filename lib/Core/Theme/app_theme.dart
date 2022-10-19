@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
-
 import 'app_text_style.dart';
 
 class AppTheme {
@@ -9,7 +8,7 @@ class AppTheme {
   AppTheme._init();
 
   ThemeData lightTheme = ThemeData(
-    colorScheme: const ColorScheme.light(),
+    scaffoldBackgroundColor: AppColorStyle.instance.white,
     textTheme: TextTheme(
       displayLarge: AppTextStyle.instance.largeTitle,
       titleLarge: AppTextStyle.instance.title1,
@@ -23,6 +22,5 @@ class AppTheme {
       labelMedium: AppTextStyle.instance.caption1,
       labelSmall: AppTextStyle.instance.caption2,
     ),
-    primaryColor: AppColorStyle.instance.peach,
   );
 }

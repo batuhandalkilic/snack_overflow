@@ -52,3 +52,7 @@ extension SizedBoxExtension on BuildContext {
 extension RadiusExtension on BuildContext {
   BorderRadius get buttonRadius => BorderRadius.circular(8.r);
 }
+
+extension NavigationExtension on BuildContext {
+  NavigatorState get navigation => Navigator.of(this);
+}

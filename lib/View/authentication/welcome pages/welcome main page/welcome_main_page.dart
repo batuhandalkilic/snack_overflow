@@ -3,9 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/components/button/custom_button.dart';
 import 'package:snack_overflow/Core/components/button/custom_icon_button.dart';
+import 'package:snack_overflow/Core/components/custom_diveder.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 import 'package:snack_overflow/Core/extension/string_extension.dart';
 import 'package:snack_overflow/View/product/constants/product_text.dart';
+
+import '../sign up page/view/sign_up_page.dart';
 
 class WelcomeMainPage extends StatefulWidget {
   const WelcomeMainPage({Key? key}) : super(key: key);
@@ -39,18 +42,15 @@ class _WelcomeMainPageState extends State<WelcomeMainPage> {
                 ),
                 signInButtons(context),
                 context.sizedBoxHeightBoxLow4x,
-                Divider(
-                  indent: MediaQuery.of(context).size.width / 6,
-                  endIndent: MediaQuery.of(context).size.width / 6,
-                  thickness: 1.7.w,
-                  color: AppColorStyle.instance.gandalf,
-                ),
+                const CustomDiveder(),
                 context.sizedBoxHeightBoxLow4x,
                 CustomPrimaryButton(
                     customButtonColor: AppColorStyle.instance.whitey,
                     textColor: AppColorStyle.instance.peach,
                     description: ProductText.instance.signUpWithEmail,
-                    onPressed: (() {}))
+                    onPressed: (() {
+                      context.navigation.push(MaterialPageRoute(builder: ((context) => const SignUpPage())));
+                    }))
               ],
             ),
           ),

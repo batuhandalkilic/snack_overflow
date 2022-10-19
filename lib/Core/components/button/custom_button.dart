@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 
 class CustomPrimaryButton extends StatefulWidget {
@@ -7,14 +8,15 @@ class CustomPrimaryButton extends StatefulWidget {
   final Color? textColor;
   final Color? customButtonColor;
   final VoidCallback onPressed;
-  const CustomPrimaryButton({
+  CustomPrimaryButton({
     Key? key,
     required this.description,
     this.buttonHeight = 56,
     this.textColor = Colors.white,
-    this.customButtonColor = Colors.orangeAccent,
+    Color? customButtonColor,
     required this.onPressed,
-  }) : super(key: key);
+  })  : customButtonColor = (customButtonColor != null ? customButtonColor : AppColorStyle.instance.peach),
+        super(key: key);
 
   @override
   State<CustomPrimaryButton> createState() => _CustomPrimaryButtonState();

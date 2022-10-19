@@ -26,11 +26,9 @@ class _MyAppState extends State<MyApp> {
       designSize: const Size(412, 914),
       builder: (BuildContext context, child) {
         const backgroundImage = 'welcome-main'; // png
-        precacheImage(
-            AssetImage(
-              backgroundImage.toJpg,
-            ),
-            context);
+        // Uygulama açılır açılmaz yüklensin!
+        //sayfa geçişinde 1 saniye geç geldiği için yapıldı!
+        preCacheImageWelcomeMainPageBackground(backgroundImage, context);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.instance.lightTheme,
@@ -39,5 +37,13 @@ class _MyAppState extends State<MyApp> {
         );
       },
     );
+  }
+
+  Future<void> preCacheImageWelcomeMainPageBackground(String backgroundImage, BuildContext context) {
+    return precacheImage(
+        AssetImage(
+          backgroundImage.toJpg,
+        ),
+        context);
   }
 }

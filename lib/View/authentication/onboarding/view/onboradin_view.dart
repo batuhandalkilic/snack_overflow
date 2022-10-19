@@ -5,7 +5,8 @@ import 'package:snack_overflow/View/product/constants/product_text.dart';
 import '../../../../Core/Theme/app_color_style.dart';
 import '../../../../Core/components/button/custom_button.dart';
 import '../../../../Core/extension/build_extension.dart';
-import '../../welceome/welcome_main_page.dart';
+
+import '../../welcome pages/welcome main page/welcome_main_page.dart';
 import '../view_model/onboarding_view_model.dart';
 
 class OnboradinView extends StatefulWidget {
@@ -51,7 +52,7 @@ class _OnboradinViewState extends OnboardingViewModel {
                             child: child,
                           );
                         },
-                        pageBuilder: ((context, animation, secondaryAnimation) => WelcomeMainPage())));
+                        pageBuilder: ((context, animation, secondaryAnimation) => const WelcomeMainPage())));
                   },
                 )),
             context.sizedBoxHeightBoxLow4x,

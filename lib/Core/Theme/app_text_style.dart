@@ -1,9 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'app_color_style.dart';
 
 enum _FontWeight {
   bold(FontWeight.w700), // 700 bold
@@ -27,6 +23,6 @@ class AppTextStyle {
   final TextStyle callOut = TextStyle(fontFamily: 'Poppins', fontSize: 21.sp);
   final TextStyle subHead = TextStyle(fontFamily: 'Poppins', fontSize: 20.sp);
   final TextStyle footNote = TextStyle(fontFamily: 'Poppins', fontSize: 17.sp);
-  final TextStyle caption1 = TextStyle(fontFamily: 'Poppins', fontSize: 16.sp);
+  final TextStyle caption1 = TextStyle(fontFamily: 'Poppins', fontSize: 12.sp);
   final TextStyle caption2 = TextStyle(fontFamily: 'Poppins', fontSize: 14.sp);
 }
