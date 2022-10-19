@@ -6,6 +6,7 @@ class AppColorStyle {
   AppColorStyle._init();
 
   Color get cornflowerBlue => const Color.fromRGBO(65, 155, 249, 1);
+  Color get facebookBlue => const Color.fromRGBO(24, 119, 242, 1);
   Color get green => const Color.fromRGBO(200, 207, 45, 1);
   Color get peachPressed => const Color.fromRGBO(238, 103, 35, 1);
   Color get peach => const Color.fromRGBO(238, 103, 35, 1);
@@ -19,4 +20,5 @@ class AppColorStyle {
   Color get whitey => const Color.fromRGBO(247, 247, 247, 1);
   Color get snowman => const Color.fromRGBO(251, 251, 251, 1);
   Color get white => const Color.fromRGBO(255, 255, 255, 1);
+  Color get black => const Color.fromRGBO(0, 0, 0, 1);
 }

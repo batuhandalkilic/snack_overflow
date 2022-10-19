@@ -10,9 +10,9 @@ abstract class OnboardingViewModel extends State<OnboradinView> {
 
   List<OnboardingModel> _bodyList() {
     List<OnboardingModel> list = [];
-    list.add(OnboardingModel(path: 'onboardingFirst'.toPng, description: 'Hand-pickle high quality snacks.'));
-    list.add(OnboardingModel(path: 'onboardingSecond'.toPng, description: 'Shop global. Mind-blownly affordable.'));
-    list.add(OnboardingModel(path: 'onboardingThird'.toPng, description: 'Deliver on the promise of time.'));
+    list.add(OnboardingModel(path: 'onboardingFirst'.toOnboardingPng, description: 'Hand-pickle high quality snacks.'));
+    list.add(OnboardingModel(path: 'onboardingSecond'.toOnboardingPng, description: 'Shop global. Mind-blownly affordable.'));
+    list.add(OnboardingModel(path: 'onboardingThird'.toOnboardingPng, description: 'Deliver on the promise of time.'));
     return list;
   }
 

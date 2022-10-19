@@ -5,6 +5,7 @@ import 'package:snack_overflow/View/product/constants/product_text.dart';
 import '../../../../Core/Theme/app_color_style.dart';
 import '../../../../Core/components/button/custom_button.dart';
 import '../../../../Core/extension/build_extension.dart';
+import '../../welceome/welcome_main_page.dart';
 import '../view_model/onboarding_view_model.dart';
 
 class OnboradinView extends StatefulWidget {
@@ -28,7 +29,15 @@ class _OnboradinViewState extends OnboardingViewModel {
             Padding(
                 padding: context.horizantalPaddingMedium,
                 child: CustomPrimaryButton(
-                    description: ProductText.instance.getStarted, buttonHeight: 56.h, customButtonColor: AppColorStyle.instance.peach)),
+                  description: ProductText.instance.getStarted,
+                  buttonHeight: 56.h,
+                  customButtonColor: AppColorStyle.instance.peach,
+                  onPressed: () {
+                    // kullanıcı bir kere görecek basınca görüldü diye kaydetmeyi unutma
+                    // shared ya da hive kullan
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: ((_) => WelcomeMainPage())));
+                  },
+                )),
             context.sizedBoxHeightBoxLow4x,
           ],
         ),
