@@ -27,6 +27,7 @@ extension PaddingExtension on BuildContext {
   EdgeInsets get primaryButton => EdgeInsets.symmetric(vertical: 21.h, horizontal: 32.w);
 }
 
+//Get device type
 extension DeviceOSExtension on BuildContext {
   bool get isAndroidDevice => Platform.isAndroid;
   bool get isIOSDevice => Platform.isIOS;
@@ -35,6 +36,7 @@ extension DeviceOSExtension on BuildContext {
   bool get isMacOSDevice => Platform.isMacOS;
 }
 
+// SizedBox
 extension SizedBoxExtension on BuildContext {
   SizedBox get sizedBoxWidthBoxLow => SizedBox(width: 4.w);
   SizedBox get sizedBoxWidthBoxLow2x => SizedBox(width: 8.w);
@@ -45,4 +47,8 @@ extension SizedBoxExtension on BuildContext {
   SizedBox get sizedBoxHeightBoxLow2x => SizedBox(height: 4.h);
   SizedBox get sizedBoxHeightBoxLow3x => SizedBox(height: 12.h);
   SizedBox get sizedBoxHeightBoxLow4x => SizedBox(height: 16.h);
+}
+
+extension RadiusExtension on BuildContext {
+  BorderRadius get buttonRadius => BorderRadius.circular(8.r);
 }
