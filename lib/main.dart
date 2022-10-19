@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:snack_overflow/Core/extension/string_extension.dart';
 
 import 'Core/Theme/app_theme.dart';
 import 'View/authentication/onboarding/view/onboradin_view.dart';
@@ -25,6 +25,12 @@ class _MyAppState extends State<MyApp> {
       child: const OnboradinView(),
       designSize: const Size(412, 914),
       builder: (BuildContext context, child) {
+        const backgroundImage = 'welcome-main'; // png
+        precacheImage(
+            AssetImage(
+              backgroundImage.toJpg,
+            ),
+            context);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.instance.lightTheme,

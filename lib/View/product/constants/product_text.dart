@@ -10,4 +10,5 @@ class ProductText {
 
   String get appTitle => 'Snack Overflow';
   String get getStarted => 'Get started';
+  String get signUpWithEmail => 'Sign up with Email';
 }

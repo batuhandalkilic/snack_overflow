@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/components/button/custom_button.dart';
 import 'package:snack_overflow/Core/components/button/custom_icon_button.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 import 'package:snack_overflow/Core/extension/string_extension.dart';
+import 'package:snack_overflow/View/product/constants/product_text.dart';
 
 class WelcomeMainPage extends StatefulWidget {
   const WelcomeMainPage({Key? key}) : super(key: key);
@@ -17,6 +19,11 @@ class _WelcomeMainPageState extends State<WelcomeMainPage> {
   final appLogo = 'applogo'; // png
   @override
   Widget build(BuildContext context) {
+    precacheImage(
+        AssetImage(
+          appLogo.toAppLogoPng,
+        ),
+        context);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -35,14 +42,14 @@ class _WelcomeMainPageState extends State<WelcomeMainPage> {
                 Divider(
                   indent: MediaQuery.of(context).size.width / 6,
                   endIndent: MediaQuery.of(context).size.width / 6,
-                  thickness: 1.7,
+                  thickness: 1.7.w,
                   color: AppColorStyle.instance.gandalf,
                 ),
                 context.sizedBoxHeightBoxLow4x,
                 CustomPrimaryButton(
                     customButtonColor: AppColorStyle.instance.whitey,
                     textColor: AppColorStyle.instance.peach,
-                    description: 'Sign up with Email',
+                    description: ProductText.instance.signUpWithEmail,
                     onPressed: (() {}))
               ],
             ),
