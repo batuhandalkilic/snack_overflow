@@ -31,113 +31,116 @@ class _SignUpPageState extends SignUpPageViewmodel {
         resizeToAvoidBottomInset: true,
         body: Padding(
           padding: context.horizantalPaddingMedium,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(iSignUpWitEmail.toIconPng),
-              context.sizedBoxHeightBoxLow4x,
-              Text(
-                ProductText.instance.goWithYourFlow,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge,
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Image.asset(iSignUpWitEmail.toIconPng),
+                  context.sizedBoxHeightBoxLow4x,
+                  Text(
+                    ProductText.instance.goWithYourFlow,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  context.sizedBoxHeightBoxLow4x,
+                  Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: context.buttonRadius, //
+                              color: AppColorStyle.instance.whitey, //
+                            ),
+                            child: TextFormField(
+                              onSaved: (newValue) => email = newValue, //
+                              autovalidateMode: AutovalidateMode.onUserInteraction, //
+                              toolbarOptions: const ToolbarOptions(paste: true),
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColorStyle.instance.teflon),
+                              autocorrect: true,
+                              maxLines: 1,
+                              autofocus: true,
+                              textInputAction: TextInputAction.next, //
+                              keyboardType: TextInputType.emailAddress, //
+                              validator: (value) {
+                                return Validator.instance.validateEmail(value); //
+                              },
+                              decoration: InputDecoration(
+                                  errorStyle: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.red),
+                                  border: InputBorder.none,
+                                  hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColorStyle.instance.clooney),
+                                  hintText: 'simit.donuts@gmail.com', //
+                                  prefixIcon: Image.asset(
+                                    //
+                                    'iMail'.toIconPng,
+                                  )),
+                            ),
+                          ),
+                          context.sizedBoxHeightBoxLow4x,
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: context.buttonRadius,
+                              color: AppColorStyle.instance.whitey,
+                            ),
+                            child: TextFormField(
+                                onSaved: (newValue) => password = newValue,
+                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColorStyle.instance.teflon),
+                                obscuringCharacter: '*', //
+                                obscureText: ref.watch(isVisibilityChangeProvider), //
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                validator: (value) => Validator.instance.validatePassword(value),
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.done,
+                                decoration: InputDecoration(
+                                    errorStyle: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.red),
+                                    hintText: "Şifre",
+                                    border: InputBorder.none,
+                                    suffixIconColor: AppColorStyle.instance.green,
+                                    suffixIcon: IconButton(
+                                        focusColor: AppColorStyle.instance.green,
+                                        onPressed: (() {
+                                          ref.read(isVisibilityChangeProvider.state).update((state) => !state);
+                                        }),
+                                        icon: AnimatedCrossFade(
+                                            firstChild: Icon(
+                                              color: AppColorStyle.instance.clooney,
+                                              Icons.visibility_off_outlined,
+                                            ),
+                                            secondChild: Icon(
+                                              Icons.visibility_outlined,
+                                              color: AppColorStyle.instance.clooney,
+                                            ),
+                                            crossFadeState:
+                                                ref.watch(isVisibilityChangeProvider) ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                                            duration: const Duration(seconds: 1))),
+                                    prefixIcon: Image.asset('iPassword'.toIconPng))),
+                          ),
+                          context.sizedBoxHeightBoxLow4x,
+                          const CustomDiveder(),
+                          context.sizedBoxHeightBoxLow4x,
+                          CustomPrimaryButton(
+                              description: "Create account",
+                              onPressed: (() {
+                                if (_formKey.currentState!.validate()) {
+                                  _formKey.currentState?.save();
+                                  UserModel newUser = UserModel(email: email!, password: password!);
+                                  print(newUser);
+                                  print(newUser.email);
+                                  print(newUser.password);
+                                }
+                              }))
+                        ],
+                      )),
+                  context.sizedBoxHeightBoxLow4x,
+                  Text(
+                    softWrap: true,
+                    textAlign: TextAlign.left,
+                    "By clicking Create account, I agree to SnackOverflow’s TOS and Privacy Policy.",
+                    style: Theme.of(context).textTheme.labelMedium,
+                  )
+                ],
               ),
-              context.sizedBoxHeightBoxLow4x,
-              Form(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: context.buttonRadius,
-                          color: AppColorStyle.instance.whitey,
-                        ),
-                        child: TextFormField(
-                          onSaved: (newValue) => email = newValue,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          // controller: TextEditingController(), //
-                          toolbarOptions: const ToolbarOptions(paste: true),
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColorStyle.instance.teflon),
-                          autocorrect: true,
-                          maxLines: 1,
-                          autofocus: true,
-                          textInputAction: TextInputAction.next, //
-                          keyboardType: TextInputType.emailAddress, //
-                          validator: (value) {
-                            return Validator.instance.validateEmail(value); //
-                          },
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColorStyle.instance.clooney),
-                              hintText: 'simit.donuts@gmail.com', //
-                              prefixIcon: Image.asset(
-                                //
-                                'iMail'.toIconPng,
-                              )),
-                        ),
-                      ),
-                      context.sizedBoxHeightBoxLow4x,
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: context.buttonRadius,
-                          color: AppColorStyle.instance.whitey,
-                        ),
-                        child: TextFormField(
-                            onSaved: (newValue) => password = newValue,
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColorStyle.instance.teflon),
-                            obscuringCharacter: '*', //
-                            obscureText: ref.watch(isVisibilityChangeProvider), //
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) => Validator.instance.validatePassword(value),
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            decoration: InputDecoration(
-                                hintText: "Şifre",
-                                border: InputBorder.none,
-                                suffixIconColor: AppColorStyle.instance.green,
-                                suffixIcon: IconButton(
-                                    focusColor: AppColorStyle.instance.green,
-                                    onPressed: (() {
-                                      ref.read(isVisibilityChangeProvider.state).update((state) => !state);
-                                    }),
-                                    icon: AnimatedCrossFade(
-                                        firstChild: Icon(
-                                          color: AppColorStyle.instance.clooney,
-                                          Icons.visibility_off_outlined,
-                                        ),
-                                        secondChild: Icon(
-                                          Icons.visibility_outlined,
-                                          color: AppColorStyle.instance.clooney,
-                                        ),
-                                        crossFadeState: ref.watch(isVisibilityChangeProvider) ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                                        duration: Duration(seconds: 1))),
-                                prefixIcon: Image.asset('iPassword'.toIconPng))),
-                      ),
-                      context.sizedBoxHeightBoxLow4x,
-                      CustomDiveder(),
-                      context.sizedBoxHeightBoxLow4x,
-                      CustomPrimaryButton(
-                          description: "Create account",
-                          onPressed: (() {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState?.save();
-                              UserModel newUser = UserModel(email: email!, password: password!);
-                              print(newUser);
-                              print(newUser.email);
-                              print(newUser.password);
-                            }
-                          }))
-                    ],
-                  )),
-              context.sizedBoxHeightBoxLow4x,
-              Text(
-                softWrap: true,
-                textAlign: TextAlign.left,
-                "By clicking Create account, I agree to SnackOverflow’s TOS and Privacy Policy.",
-                style: Theme.of(context).textTheme.labelMedium,
-              )
-            ],
+            ),
           ),
         ),
       ),
