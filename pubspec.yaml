@@ -29,8 +29,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # State Manangment
   flutter_riverpod: ^2.0.2
+  # Responsive, Adaptive
   flutter_screenutil: ^5.5.4
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_lints: 1.0.4

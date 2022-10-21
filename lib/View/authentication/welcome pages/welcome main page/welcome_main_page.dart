@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/components/button/custom_button.dart';
 import 'package:snack_overflow/Core/components/button/custom_icon_button.dart';
-import 'package:snack_overflow/Core/components/custom_diveder.dart';
+import 'package:snack_overflow/Core/components/diveder/custom_diveder.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 import 'package:snack_overflow/Core/extension/string_extension.dart';
 import 'package:snack_overflow/View/product/constants/product_text.dart';

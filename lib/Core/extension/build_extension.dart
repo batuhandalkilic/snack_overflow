@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,6 +22,11 @@ extension PaddingExtension on BuildContext {
 
   //zeroPadding
   EdgeInsets get zeroPadding => EdgeInsets.zero;
+
+  // all
+  EdgeInsets get allPaddingBase => EdgeInsets.all(4.h);
+  EdgeInsets get allPaddingSmall => EdgeInsets.all(12.h);
+  EdgeInsets get allPaddingMedium => EdgeInsets.all(16.h);
 
   //Button
 
@@ -55,4 +61,8 @@ extension RadiusExtension on BuildContext {
 
 extension NavigationExtension on BuildContext {
   NavigatorState get navigation => Navigator.of(this);
+}
+
+extension RandomColorDev on BuildContext {
+  Color get randomColor => Color.fromRGBO(Random().nextInt(255), Random().nextInt(255), Random().nextInt(255), 1);
 }

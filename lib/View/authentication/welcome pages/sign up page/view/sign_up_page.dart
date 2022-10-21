@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/components/button/custom_button.dart';
-import 'package:snack_overflow/Core/components/custom_diveder.dart';
+import 'package:snack_overflow/Core/components/diveder/custom_diveder.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 import 'package:snack_overflow/Core/validator/mail_validator.dart';
 import 'package:snack_overflow/View/authentication/welcome%20pages/sign%20up%20page/model/user_model.dart';

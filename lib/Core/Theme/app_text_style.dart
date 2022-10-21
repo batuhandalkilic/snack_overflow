@@ -16,7 +16,7 @@ class AppTextStyle {
 
   final TextStyle largeTitle = TextStyle(fontFamily: 'Poppins', fontSize: 45.sp, fontWeight: _FontWeight.bold.value);
   final TextStyle title1 = TextStyle(fontFamily: 'Poppins', fontSize: 37.sp, fontWeight: _FontWeight.bold.value);
-  final TextStyle title2 = TextStyle(fontFamily: 'Poppins', fontSize: 29.sp, fontWeight: _FontWeight.semiBold.value);
+  final TextStyle title2 = TextStyle(fontFamily: 'Poppins', fontSize: 27.sp, fontWeight: _FontWeight.semiBold.value);
   final TextStyle title3 = TextStyle(fontFamily: 'Poppins', fontSize: 26.sp, fontWeight: _FontWeight.semiBold.value);
   final TextStyle headLine = TextStyle(fontFamily: 'Poppins', fontSize: 23.sp, fontWeight: _FontWeight.semiBold.value);
   final TextStyle body = TextStyle(fontFamily: 'Poppins', fontSize: 22.sp);

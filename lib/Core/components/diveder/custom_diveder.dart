@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Theme/app_color_style.dart';
+import '../../Theme/app_color_style.dart';
 
 class CustomDiveder extends StatelessWidget {
   const CustomDiveder({
