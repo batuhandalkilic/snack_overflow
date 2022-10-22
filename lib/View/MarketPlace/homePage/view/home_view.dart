@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
                   LargeCarousel(objectList: list),
                   SubsectionTitle(subsectionTitle: "Popular items", onPressed: (() {})),
                   CarouselWithDetails(
-                    smallImageMode: false,
+                    smallImageMode: true,
                     carouselWithDetailsModel: [
                       CarouselWithDetailsModel(
                           iconss: Icons.access_alarm_outlined,

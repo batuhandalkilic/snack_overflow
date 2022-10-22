@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 import 'package:snack_overflow/View/MarketPlace/market_place_provider.dart';
-
 import 'homePage/view/home_view.dart';
+import 'marketPage/view/market_view.dart';
 
 class MarkatPlace extends ConsumerStatefulWidget {
   const MarkatPlace({Key? key}) : super(key: key);
@@ -48,11 +48,7 @@ class _MarkatPlaceState extends ConsumerState<MarkatPlace> {
     if (_currentPageIndex == _Currentpage.home.index) {
       return const HomeView();
     } else if (_currentPageIndex == _Currentpage.market.index) {
-      return Scaffold(
-        body: Container(
-          color: const Color.fromARGB(255, 201, 243, 33),
-        ),
-      );
+      return MarketView();
     } else if (_currentPageIndex == _Currentpage.create.index) {
       return Scaffold(
         body: Container(

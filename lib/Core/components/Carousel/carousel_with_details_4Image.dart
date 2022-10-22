@@ -28,8 +28,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
             return UnconstrainedBox(
               child: Container(
                 padding: context.horizantalPaddingSmall,
-                width: 190.w,
-                height: 260.h,
+                width: 230.w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -38,8 +37,8 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                         borderRadius: context.buttonRadius,
                         border: Border.all(width: 1.sm, color: AppColorStyle.instance.clooney),
                       ),
-                      width: 160.w,
-                      height: 160.w,
+                      width: 180.w,
+                      height: 180.w,
                       child: Column(
                         children: [
                           Expanded(
@@ -101,13 +100,11 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                         ],
                       ),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          widget.list[index].title,
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.teflon),
-                        )
-                      ],
+                    Text(
+                      widget.list[index].title,
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.teflon),
                     ),
                     Row(
                       children: [
