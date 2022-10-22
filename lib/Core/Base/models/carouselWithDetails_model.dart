@@ -8,10 +8,12 @@ class CarouselWithDetailsModel extends LargeCarouselModel {
   final String describe;
   final String rate;
   final String time;
+  String? price;
 
   CarouselWithDetailsModel({
     required super.imagePath,
     IconData? iconss,
+    this.price,
     required this.title,
     required this.describe,
     required this.rate,

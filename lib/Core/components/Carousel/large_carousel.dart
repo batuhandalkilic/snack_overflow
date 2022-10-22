@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 
-import '../../../View/MarketPlace/homePage/model/large_carousel_model.dart';
+import '../../Base/models/large_carousel_model.dart';
 import '../../Theme/app_color_style.dart';
 
 // ignore: must_be_immutable

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 
-import '../../../View/MarketPlace/homePage/model/carouselWithDetails_model.dart';
+import '../../Base/models/carouselWithDetails_model.dart';
 import '../../Theme/app_color_style.dart';
 
 class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessWidget {
@@ -17,7 +17,7 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 280.h,
+      height: 300.h,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: carouselWithDetailsModel.length,
@@ -26,19 +26,20 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
               child: Container(
                 padding: context.horizantalPaddingSmall,
                 width: smallImageMode ? 190.w : 290.w,
-                height: 280.h, //
+                height: 300.h, //
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      width: 160.h,
-                      height: 160.h,
+                      width: 160.w,
+                      height: 160.w,
                       decoration: BoxDecoration(
                         image: DecorationImage(fit: BoxFit.cover, image: AssetImage(carouselWithDetailsModel[index].imagePath)),
                         borderRadius: context.buttonRadius,
                       ),
                     ),
                     Row(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         (carouselWithDetailsModel[index].titleIcons != null
                             ? Icon(
@@ -46,15 +47,18 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
                                 size: 16.sm,
                               )
                             : Container()),
-                        context.sizedBoxWidthBoxLow,
+                        context.sizedBoxWidthBoxLow2x,
                         Text(
                           carouselWithDetailsModel[index].title,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.teflon),
                         )
                       ],
                     ),
                     Text(
                       carouselWithDetailsModel[index].describe,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Row(

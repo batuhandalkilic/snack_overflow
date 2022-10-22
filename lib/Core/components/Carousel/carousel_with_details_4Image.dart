@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 
-import '../../../View/MarketPlace/homePage/model/carouseWithDetails4Image_model.dart';
+import '../../Base/models/carouseWithDetails4Image_model.dart';
 import '../../Theme/app_color_style.dart';
 
 class CarouselWithDetails4Image extends StatefulWidget {
