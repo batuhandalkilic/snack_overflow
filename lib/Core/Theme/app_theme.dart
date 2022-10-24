@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:snack_overflow/Core/Theme/app_color_style.dart';
+
+import 'app_color_style.dart';
 import 'app_text_style.dart';
 
 class AppTheme {
@@ -8,6 +9,14 @@ class AppTheme {
   AppTheme._init();
 
   ThemeData lightTheme = ThemeData(
+    appBarTheme: AppBarTheme(
+        centerTitle: true,
+        titleTextStyle: AppTextStyle.instance.headLine.copyWith(
+          color: Colors.black,
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.black)),
     scaffoldBackgroundColor: AppColorStyle.instance.white,
     textTheme: TextTheme(
       displayLarge: AppTextStyle.instance.largeTitle,

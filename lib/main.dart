@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:snack_overflow/Core/extension/string_extension.dart';
+import 'Core/extension/string_extension.dart';
 
 import 'Core/Theme/app_theme.dart';
 import 'View/MarketPlace/markat_place.dart';

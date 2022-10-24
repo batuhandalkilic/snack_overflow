@@ -1,15 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:snack_overflow/Core/extension/build_extension.dart';
+import 'package:snack_overflow/Core/Base/models/base_model_list.dart';
 
 import '../../Base/models/carouseWithDetails4Image_model.dart';
 import '../../Theme/app_color_style.dart';
+import '../../extension/build_extension.dart';
 
-class CarouselWithDetails4Image extends StatefulWidget {
-  final List<CarouseWithDetails4Image_model> list;
-  const CarouselWithDetails4Image({
+class CarouselWithDetails4Image<T extends BaseModelList> extends StatefulWidget {
+  T? currenObject;
+  List<CarouseWithDetails4Image_model>? list;
+  CarouselWithDetails4Image({
     Key? key,
-    required this.list,
+    this.currenObject,
+    this.list,
   }) : super(key: key);
 
   @override
@@ -23,7 +27,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
       height: 300.h,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: widget.list.length,
+          itemCount: widget.list?.length ?? 0,
           itemBuilder: ((context, index) {
             return UnconstrainedBox(
               child: Container(
@@ -49,7 +53,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                                     padding: context.allPaddingBase,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list[index].topLeftImage)),
+                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list![index].topLeftImage)),
                                         borderRadius: context.buttonRadius,
                                       ),
                                     ),
@@ -60,7 +64,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                                     padding: context.allPaddingBase,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list[index].topRightImage)),
+                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list![index].topRightImage)),
                                         borderRadius: context.buttonRadius,
                                       ),
                                     ),
@@ -77,7 +81,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                                     padding: context.allPaddingBase,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list[index].bottomRightImage)),
+                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list![index].bottomRightImage)),
                                         borderRadius: context.buttonRadius,
                                       ),
                                     ),
@@ -88,7 +92,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                                     padding: context.allPaddingBase,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list[index].bottomLeftImage)),
+                                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.list![index].bottomLeftImage)),
                                         borderRadius: context.buttonRadius,
                                       ),
                                     ),
@@ -101,7 +105,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                       ),
                     ),
                     Text(
-                      widget.list[index].title,
+                      widget.list![index].title,
                       maxLines: 1,
                       overflow: TextOverflow.clip,
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.teflon),
@@ -114,7 +118,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                         ),
                         context.sizedBoxWidthBoxLow,
                         Text(
-                          widget.list[index].rate,
+                          widget.list![index].rate,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.gandalf),
                         ),
                         context.sizedBoxWidthBoxLow2x,
@@ -124,7 +128,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                         ),
                         context.sizedBoxWidthBoxLow,
                         Text(
-                          widget.list[index].time,
+                          widget.list![index].time,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.gandalf),
                         )
                       ],

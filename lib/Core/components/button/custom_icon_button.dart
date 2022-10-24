@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:snack_overflow/Core/extension/build_extension.dart';
+
+import '../../Theme/app_color_style.dart';
+import '../../extension/build_extension.dart';
 
 class CustomPrimaryIconButton extends StatefulWidget {
   final String description;
   final double? buttonHeight;
   final Color? textColor;
-  final Color? customButtonColor;
+  Color? customButtonColor;
+  bool? isTextAlignCenter;
   final VoidCallback onPressed;
   final Widget icon;
-  const CustomPrimaryIconButton({
+  CustomPrimaryIconButton({
     Key? key,
     required this.description,
     this.buttonHeight = 56,
     this.textColor = Colors.white,
-    this.customButtonColor = Colors.orangeAccent,
+    customButtonColor,
+    isTextAlignCenter,
     required this.onPressed,
     required this.icon,
-  }) : super(key: key);
+  })  : isTextAlignCenter = ((isTextAlignCenter == false || isTextAlignCenter == null) ? false : true),
+        customButtonColor = (customButtonColor != null ? customButtonColor : AppColorStyle.instance.peach),
+        super(key: key);
 
   @override
   State<CustomPrimaryIconButton> createState() => _CustomPrimaryButtonState();
@@ -31,7 +37,7 @@ class _CustomPrimaryButtonState extends State<CustomPrimaryIconButton> {
       child: ElevatedButton.icon(
         icon: widget.icon,
         style: ElevatedButton.styleFrom(
-          alignment: Alignment.centerLeft,
+          alignment: widget.isTextAlignCenter == true ? Alignment.center : Alignment.centerLeft,
           primary: widget.customButtonColor,
           shape: RoundedRectangleBorder(
             borderRadius: context.buttonRadius,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:snack_overflow/Core/extension/build_extension.dart';
 
 import '../../Base/models/carouselWithDetails_model.dart';
 import '../../Theme/app_color_style.dart';
+import '../../extension/build_extension.dart';
 
 class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessWidget {
   final bool smallImageMode;
@@ -28,10 +28,11 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
                 width: smallImageMode ? 190.w : 290.w,
                 height: 300.h, //
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 160.w,
+                      width: smallImageMode ? 160.w : 290.w,
                       height: 160.w,
                       decoration: BoxDecoration(
                         image: DecorationImage(fit: BoxFit.cover, image: AssetImage(carouselWithDetailsModel[index].imagePath)),
@@ -39,20 +40,16 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
                       ),
                     ),
                     Row(
-                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        (carouselWithDetailsModel[index].titleIcons != null
-                            ? Icon(
-                                carouselWithDetailsModel[index].titleIcons,
-                                size: 16.sm,
-                              )
-                            : Container()),
-                        context.sizedBoxWidthBoxLow2x,
-                        Text(
-                          carouselWithDetailsModel[index].title,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.teflon),
-                        )
+                        (carouselWithDetailsModel[index].titleIcons != null) ? Icon(carouselWithDetailsModel[index].titleIcons) : Container(),
+                        (carouselWithDetailsModel[index].titleIcons != null) ? context.sizedBoxWidthBoxLow : const SizedBox(),
+                        Expanded(
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            carouselWithDetailsModel[index].title,
+                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.teflon),
+                          ),
+                        ),
                       ],
                     ),
                     Text(

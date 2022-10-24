@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:snack_overflow/Core/Theme/app_color_style.dart';
-import 'package:snack_overflow/Core/extension/build_extension.dart';
-import 'package:snack_overflow/View/MarketPlace/market_place_provider.dart';
+import '../../Core/Theme/app_color_style.dart';
+import '../../Core/extension/build_extension.dart';
+import 'market_place_provider.dart';
 import 'homePage/view/home_view.dart';
 import 'marketPage/view/market_view.dart';
 
