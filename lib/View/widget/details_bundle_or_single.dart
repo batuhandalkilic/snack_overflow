@@ -12,7 +12,7 @@ class Details_bundle_or_single extends StatelessWidget {
     required this.widget,
   }) : super(key: key);
 
-  final Details<BaseModelList> widget;
+  final BaseModelList widget;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,11 @@ class Details_bundle_or_single extends StatelessWidget {
             border: Border.all(width: 1.sm, color: AppColorStyle.instance.clooney),
           ),
           width: 140.sm,
-          height: 140.sm,
-          child: (widget.currenObject.topLeftImage == null && widget.currenObject.imagePath != null)
+          height: 150.sm,
+          child: (widget.topLeftImage == null && widget.imagePath != null)
               ? Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.currenObject.imagePath ?? "")),
+                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.imagePath ?? "")),
                     borderRadius: context.buttonRadius,
                   ),
                 )
@@ -46,7 +46,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.currenObject.topLeftImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.topLeftImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -57,7 +57,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.currenObject.topRightImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.topRightImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -74,7 +74,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.currenObject.bottomRightImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.bottomRightImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -85,7 +85,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.currenObject.bottomLeftImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.bottomLeftImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -100,19 +100,18 @@ class Details_bundle_or_single extends StatelessWidget {
         context.sizedBoxWidthBoxLow2x,
         Expanded(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.currenObject.title,
+                widget.title,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(color: AppColorStyle.instance.teflon),
               ),
               Text(
-                widget.currenObject.describe ?? "",
+                widget.describe ?? "",
                 overflow: TextOverflow.clip,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.labelLarge,
               ),
-              Text(widget.currenObject.price ?? "12"),
+              Text(widget.price ?? "12"),
               rate_and_time(widget: widget)
             ],
           ),

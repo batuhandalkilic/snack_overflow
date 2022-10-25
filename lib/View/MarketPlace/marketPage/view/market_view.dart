@@ -73,17 +73,15 @@ class _MarketViewState extends MarketPageViewModel {
           itemCount: suggestedList().length,
           itemBuilder: (BuildContext context, int index) {
             BaseModelList currentObjectt = suggestedList()[index];
-            return GestureDetector(
+            return ListTile(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: ((context) => Details(
                           currenObject: currentObjectt,
                         ))));
               },
-              child: ListTile(
-                leading: const Icon(Icons.favorite),
-                title: Text(currentObjectt.title),
-              ),
+              leading: const Icon(Icons.favorite),
+              title: Text(currentObjectt.title),
             );
           },
         ),
@@ -106,7 +104,7 @@ class _MarketViewState extends MarketPageViewModel {
           itemBuilder: (BuildContext context, int index) {
             final currentModell = queryList()[index];
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 context.sizedBoxHeightBoxLow4x,
                 GestureDetector(

@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:snack_overflow/Core/Base/Provider/add_shop_list.dart';
 import 'package:snack_overflow/Core/Base/models/base_model_list.dart';
 import 'package:snack_overflow/Core/components/card/hero_card.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
@@ -9,7 +11,7 @@ import '../../Core/Theme/app_color_style.dart';
 import '../../Core/components/button/custom_icon_button.dart';
 import 'details_bundle_or_single.dart';
 
-class Details<T extends BaseModelList> extends StatefulWidget {
+class Details<T extends BaseModelList> extends ConsumerStatefulWidget {
   final T currenObject;
   const Details({
     Key? key,
@@ -20,7 +22,7 @@ class Details<T extends BaseModelList> extends StatefulWidget {
   _DetailsState createState() => _DetailsState();
 }
 
-class _DetailsState extends State<Details> {
+class _DetailsState extends ConsumerState<Details> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,10 +51,15 @@ class _DetailsState extends State<Details> {
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppColorStyle.instance.black),
                   ),
                   context.sizedBoxHeightBoxLow4x,
-                  Details_bundle_or_single(widget: widget),
+                  Details_bundle_or_single(widget: widget.currenObject),
                   context.sizedBoxHeightBoxLow4x,
                   CustomPrimaryIconButton(
-                      isTextAlignCenter: true, description: 'Add to shopping cart', onPressed: (() {}), icon: Icon(Icons.add_shopping_cart_outlined)),
+                      isTextAlignCenter: true,
+                      description: 'Add to shopping cart',
+                      onPressed: (() {
+                        ref.read(shopListProvider.notifier).addShopList(widget.currenObject);
+                      }),
+                      icon: Icon(Icons.add_shopping_cart_outlined)),
                   context.sizedBoxHeightBoxLow4x,
                   CustomPrimaryIconButton(
                       textColor: AppColorStyle.instance.peach,
@@ -82,7 +89,7 @@ class _DetailsState extends State<Details> {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         context.sizedBoxWidthBoxLow2x,
-        rate_and_time(widget: widget),
+        rate_and_time(widget: widget.currenObject),
       ],
     );
   }
@@ -94,7 +101,7 @@ class rate_and_time extends StatelessWidget {
     required this.widget,
   }) : super(key: key);
 
-  final Details<BaseModelList> widget;
+  final BaseModelList widget;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +114,7 @@ class rate_and_time extends StatelessWidget {
         ),
         context.sizedBoxWidthBoxLow,
         Text(
-          widget.currenObject.rate,
+          widget.rate,
           style: Theme.of(context).textTheme.labelSmall,
         ),
         context.sizedBoxWidthBoxLow3x,
@@ -117,7 +124,7 @@ class rate_and_time extends StatelessWidget {
         ),
         context.sizedBoxWidthBoxLow,
         Text(
-          widget.currenObject.time,
+          widget.time,
           style: Theme.of(context).textTheme.labelMedium?.copyWith(color: AppColorStyle.instance.clooney),
         ),
       ],

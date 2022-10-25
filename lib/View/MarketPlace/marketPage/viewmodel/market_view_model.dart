@@ -16,17 +16,18 @@ abstract class MarketPageViewModel extends ConsumerState<MarketView> {
         topRightImage: 'sushi2'.toEatPng,
         bottomLeftImage: 'sushi3'.toEatPng,
         bottomRightImage: 'sushi4'.toEatPng,
-        title: "Japon Sushi Bundle",
+        title: "Japon Sushi",
         rate: '3.2',
         time: '30m',
-        price: "\$50.99"),
+        price: "50.99"),
     CarouseWithDetails4Image_model(
         keyword: ["simit", "kahvaltı", "pogaca", "poğaça", "bogaca", "bundle"],
         topLeftImage: 'simit1'.toEatPng,
         topRightImage: 'simit2'.toEatPng,
         bottomLeftImage: 'simit3'.toEatPng,
         bottomRightImage: 'simit4'.toEatPng,
-        title: 'Simit Lovers Bundle',
+        title: 'Simit Lovers',
+        describe: "lorem lorem lorem",
         rate: '4.8',
         time: '32m'),
     CarouseWithDetails4Image_model(
@@ -38,8 +39,8 @@ abstract class MarketPageViewModel extends ConsumerState<MarketView> {
         title: 'Baklava Bundle',
         rate: '5',
         time: '32m',
-        price: "\$121",
-        describe: "Authentic Turkish tea and snack bundle"),
+        price: "121",
+        describe: "Authentic Turkish bundle"),
   ];
   List<LargeCarouselModel> largeCarouselModelList = [
     LargeCarouselModel(imagePath: "turkcayi".toEatPng, onImagedescribe: "Turkish tea time bundle"),
