@@ -3,22 +3,23 @@ import 'package:flutter/cupertino.dart';
 import 'base_model_list.dart';
 import 'large_carousel_model.dart';
 
-class CarouselWithDetailsModel extends LargeCarouselModel implements BaseModelList {
-  final List<String> keyword;
+class CarouselWithDetailsModel implements BaseModelList {
+  List<String>? keyword;
   final String title;
   IconData? titleIcons;
-  final String describe;
+  String? describe;
   final String rate;
   final String time;
   String? price;
+  String? imagePath;
 
   CarouselWithDetailsModel({
-    required super.imagePath,
     IconData? iconss,
+    this.imagePath,
     this.price,
-    required this.keyword,
+    this.keyword,
     required this.title,
-    required this.describe,
+    this.describe,
     required this.rate,
     required this.time,
   }) : titleIcons = iconss;

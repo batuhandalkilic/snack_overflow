@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 
 import '../../../../Core/Base/models/base_model_list.dart';
+import '../../../../Core/Base/models/carouseWithDetails4Image_model.dart';
 import '../../../../Core/components/Carousel/carousel_with_details.dart';
 import '../../../../Core/components/Carousel/carousel_with_details_4Image.dart';
 import '../../../../Core/components/Carousel/large_carousel.dart';
@@ -23,14 +25,13 @@ class _MarketViewState extends MarketPageViewModel {
   Widget build(BuildContext context) {
     final typingValue = ref.watch(typingStringProvider);
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: (() {})),
         body: Padding(
-          padding: context.horizantalPaddingMedium,
-          child: ListView(
-            //Status 1-""/ 2-"tapping" / 3-"typing" => else
-            children: searchingStatus(typingValue),
-          ),
-        ));
+      padding: context.horizantalPaddingMedium,
+      child: ListView(
+        //Status 1-""/ 2-"tapping" / 3-"typing" => else
+        children: searchingStatus(typingValue),
+      ),
+    ));
   }
 
   List<Widget> searchingStatus(String status) {
@@ -57,6 +58,7 @@ class _MarketViewState extends MarketPageViewModel {
           "Recent Searches",
           style: Theme.of(context).textTheme.titleMedium,
         ),
+
         // Hive aç kullanıcı girince list<String> tut ilk başta yoksa
         // arama yapılmadı yazdır
         // ilk arama yapınca hive ile kaydet ve yazdır!
@@ -66,7 +68,7 @@ class _MarketViewState extends MarketPageViewModel {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         ListView.builder(
-          physics: const AlwaysScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: suggestedList().length,
           itemBuilder: (BuildContext context, int index) {
@@ -92,13 +94,37 @@ class _MarketViewState extends MarketPageViewModel {
       return [
         context.sizedBoxHeightBoxLow4x,
         SearchTextField(ref: ref, typingValue: status),
+        context.sizedBoxHeightBoxLow4x,
+        Text(
+          "Search result",
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
         ListView.builder(
           shrinkWrap: true,
           physics: const ScrollPhysics(),
-          itemCount: 10,
+          itemCount: queryList().length,
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text("data"),
+            final currentModell = queryList()[index];
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                context.sizedBoxHeightBoxLow4x,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => Details(
+                              currenObject: currentModell,
+                            ))));
+                  },
+                  child: Text(
+                    currentModell.title,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColorStyle.instance.gandalf),
+                  ),
+                ),
+                Divider(
+                  thickness: 2,
+                ),
+              ],
             );
           },
         ),

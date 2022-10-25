@@ -35,7 +35,7 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
                       width: smallImageMode ? 160.w : 290.w,
                       height: 160.w,
                       decoration: BoxDecoration(
-                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(carouselWithDetailsModel[index].imagePath)),
+                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage(carouselWithDetailsModel[index].imagePath ?? "")),
                         borderRadius: context.buttonRadius,
                       ),
                     ),
@@ -53,7 +53,7 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
                       ],
                     ),
                     Text(
-                      carouselWithDetailsModel[index].describe,
+                      carouselWithDetailsModel[index].describe ?? "No describe",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodySmall,

@@ -3,7 +3,10 @@
 import 'base_model_list.dart';
 
 class CarouseWithDetails4Image_model implements BaseModelList {
+  List<String>? keyword;
   String? price;
+  String? describe;
+  String? imagePath;
   final String topLeftImage;
   final String topRightImage;
   final String bottomLeftImage;
@@ -13,6 +16,10 @@ class CarouseWithDetails4Image_model implements BaseModelList {
   final String time;
 
   CarouseWithDetails4Image_model({
+    this.keyword,
+    this.price,
+    this.describe,
+    this.imagePath,
     required this.topLeftImage,
     required this.topRightImage,
     required this.bottomLeftImage,
@@ -20,7 +27,6 @@ class CarouseWithDetails4Image_model implements BaseModelList {
     required this.title,
     required this.rate,
     required this.time,
-    this.price,
   });
 
   @override
