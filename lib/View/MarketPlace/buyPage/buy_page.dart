@@ -109,7 +109,7 @@ class _BuyPAGEState extends ConsumerState<BuyPAGE> {
                                               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.clooney),
                                             ),
                                             subtitle: Text(
-                                              "Oğuzlar mah, 1570.sk,meydan sitesi,b blok daire 16",
+                                              "Ank Güzel mah. 231.sk yar sitesi b 4",
                                               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.black),
                                             ),
                                             trailing: IconButton(
@@ -124,7 +124,7 @@ class _BuyPAGEState extends ConsumerState<BuyPAGE> {
                                               "CONTACT",
                                               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.clooney),
                                             ),
-                                            title: Text("Süleyman Batuhan Dalkılıç",
+                                            title: Text("aliiii",
                                                 style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.black)),
                                             subtitle: Text(
                                               "0000000000",
