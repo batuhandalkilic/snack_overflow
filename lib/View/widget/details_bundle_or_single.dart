@@ -111,7 +111,7 @@ class Details_bundle_or_single extends StatelessWidget {
                 overflow: TextOverflow.clip,
                 style: Theme.of(context).textTheme.labelLarge,
               ),
-              Text(widget.price ?? "12"),
+              Text("\$${widget.price ?? '12'}"),
               rate_and_time(widget: widget)
             ],
           ),

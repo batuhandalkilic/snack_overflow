@@ -33,7 +33,7 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
                   children: [
                     Container(
                       width: smallImageMode ? 160.w : 290.w,
-                      height: 160.w,
+                      height: 160.h,
                       decoration: BoxDecoration(
                         image: DecorationImage(fit: BoxFit.cover, image: AssetImage(carouselWithDetailsModel[index].imagePath ?? "")),
                         borderRadius: context.buttonRadius,

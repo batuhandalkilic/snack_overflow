@@ -10,6 +10,7 @@ import '../../../../Core/components/Carousel/large_carousel.dart';
 import '../../../../Core/extension/build_extension.dart';
 import '../../../widget/details.dart';
 import '../../../widget/searchingButton.dart';
+import '../../../widget/searching_no_result.dart';
 import '../../../widget/subsection_title.dart';
 import '../viewmodel/market_view_model.dart';
 
@@ -28,6 +29,8 @@ class _MarketViewState extends MarketPageViewModel {
         body: Padding(
       padding: context.horizantalPaddingMedium,
       child: ListView(
+        shrinkWrap: true,
+        physics: const AlwaysScrollableScrollPhysics(),
         //Status 1-""/ 2-"tapping" / 3-"typing" => else
         children: searchingStatus(typingValue),
       ),
@@ -97,35 +100,37 @@ class _MarketViewState extends MarketPageViewModel {
           "Search result",
           style: Theme.of(context).textTheme.titleSmall,
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const ScrollPhysics(),
-          itemCount: queryList().length,
-          itemBuilder: (BuildContext context, int index) {
-            final currentModell = queryList()[index];
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                context.sizedBoxHeightBoxLow4x,
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => Details(
-                              currenObject: currentModell,
-                            ))));
-                  },
-                  child: Text(
-                    currentModell.title,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColorStyle.instance.gandalf),
-                  ),
-                ),
-                Divider(
-                  thickness: 2,
-                ),
-              ],
-            );
-          },
-        ),
+        queryList().isNotEmpty
+            ? ListView.builder(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                itemCount: queryList().length,
+                itemBuilder: (BuildContext context, int index) {
+                  final currentModell = queryList()[index];
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      context.sizedBoxHeightBoxLow4x,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: ((context) => Details(
+                                    currenObject: currentModell,
+                                  ))));
+                        },
+                        child: Text(
+                          currentModell.title,
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColorStyle.instance.gandalf),
+                        ),
+                      ),
+                      Divider(
+                        thickness: 2,
+                      ),
+                    ],
+                  );
+                },
+              )
+            : const SearchingNoResult(),
       ];
     }
   }

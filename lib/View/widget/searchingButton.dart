@@ -40,6 +40,7 @@ class _SearchTextFieldState extends ConsumerState<SearchTextField> {
         cursorColor: AppColorStyle.instance.clooney,
         keyboardType: TextInputType.name,
         autocorrect: false,
+        autofocus: false,
         enableSuggestions: false,
         clipBehavior: Clip.none,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(decoration: TextDecoration.none),
@@ -50,7 +51,6 @@ class _SearchTextFieldState extends ConsumerState<SearchTextField> {
                   onPressed: () {
                     widget.ref.read(typingStringProvider.state).state = "";
                     _searchingController.text = "";
-                    FocusManager.instance.primaryFocus?.unfocus();
                   },
                   icon: Icon(
                     Icons.clear,

@@ -29,7 +29,8 @@ abstract class MarketPageViewModel extends ConsumerState<MarketView> {
         title: 'Simit Lovers',
         describe: "lorem lorem lorem",
         rate: '4.8',
-        time: '32m'),
+        time: '32m',
+        price: "9.99"),
     CarouseWithDetails4Image_model(
         keyword: ["baklava", "sweet", "bundel"],
         topLeftImage: 'baklava'.toEatPng,
@@ -54,7 +55,8 @@ abstract class MarketPageViewModel extends ConsumerState<MarketView> {
         title: "Taiyaki",
         describe: "Japanes Ice creamaaa",
         rate: "4.3",
-        time: "20m"),
+        time: "20m",
+        price: "37.99"),
     CarouselWithDetailsModel(
         keyword: ["milk", "daily", "healty", "food", "sweet"],
         imagePath: 'milk'.toEatPng,
@@ -122,17 +124,14 @@ abstract class MarketPageViewModel extends ConsumerState<MarketView> {
           time: '30m',
           rate: '5'),
     ]);
-
     final queryResult = queryList.where((element) {
       final query = ref.watch(typingStringProvider).toLowerCase();
       final keywordList = element.keyword;
       bool ac = keywordList!.any((element) {
         return element.toLowerCase().contains(query);
       });
-
       return ac;
     }).toList();
-
     return queryResult;
   }
 }
