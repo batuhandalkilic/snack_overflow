@@ -58,6 +58,7 @@ class _DetailsState extends ConsumerState<Details> {
                       description: 'Add to shopping cart',
                       onPressed: (() {
                         ref.read(shopListProvider.notifier).addShopList(widget.currenObject);
+                        ScaffoldMessenger.of(context).showSnackBar(detailsSnackBar(widget.currenObject));
                       }),
                       icon: Icon(Icons.add_shopping_cart_outlined)),
                   context.sizedBoxHeightBoxLow4x,
@@ -81,11 +82,23 @@ class _DetailsState extends ConsumerState<Details> {
     );
   }
 
+  SnackBar detailsSnackBar(BaseModelList currenObject) => SnackBar(
+      duration: Duration(milliseconds: 300),
+      backgroundColor: AppColorStyle.instance.peach,
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.shopping_cart_outlined),
+          context.sizedBoxWidthBoxLow,
+          Text("${currenObject.title} eklendi"),
+        ],
+      ));
+
   Row informationItems(BuildContext context) {
     return Row(
       children: [
         Text(
-          widget.currenObject.price ?? "Satış yok",
+          "\$${widget.currenObject.price ?? '12'}",
           style: Theme.of(context).textTheme.titleMedium,
         ),
         context.sizedBoxWidthBoxLow2x,

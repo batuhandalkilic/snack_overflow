@@ -18,6 +18,10 @@ class ShopList extends StateNotifier<List<BaseModelList>> {
 
     state = [...state];
   }
+
+  void clearList() {
+    state = [];
+  }
 }
 
 final calculateProvider = Provider((ref) {

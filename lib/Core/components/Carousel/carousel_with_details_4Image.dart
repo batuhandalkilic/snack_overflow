@@ -42,7 +42,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
                         border: Border.all(width: 1.sm, color: AppColorStyle.instance.clooney),
                       ),
                       width: 180.w,
-                      height: 180.w,
+                      height: 180.h,
                       child: Column(
                         children: [
                           Expanded(

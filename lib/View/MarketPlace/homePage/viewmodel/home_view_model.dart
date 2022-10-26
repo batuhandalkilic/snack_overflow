@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:snack_overflow/Core/Base/models/carouselWithDetails_model.dart';
 import 'package:snack_overflow/Core/extension/string_extension.dart';
 import '../../../../Core/Base/models/carouseWithDetails4Image_model.dart';
@@ -6,7 +7,7 @@ import '../../../../Core/Base/models/large_carousel_model.dart';
 
 import '../view/home_view.dart';
 
-abstract class HomeViewModel extends State<HomeView> {
+abstract class HomeViewModel extends ConsumerState<HomeView> {
   List<LargeCarouselModel> get largeCarouselModelList => [
         LargeCarouselModel(imagePath: "chips".toEatPng, onImagedescribe: "Review 10 snack of guilty pleasure"),
         LargeCarouselModel(imagePath: "badem".toEatPng, onImagedescribe: 'Review 10 snacks good for your health'),

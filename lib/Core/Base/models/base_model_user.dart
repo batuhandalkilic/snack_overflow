@@ -5,6 +5,7 @@ class User {
   final String adress;
   final String contact;
   final List<String> recentSearches;
+  final String crediCart;
 
   User(
     this.email,
@@ -12,5 +13,6 @@ class User {
     this.adress,
     this.contact,
     this.recentSearches,
+    this.crediCart,
   );
 }
