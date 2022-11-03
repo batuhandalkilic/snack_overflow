@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
@@ -30,11 +32,11 @@ class _SearchTextFieldState extends ConsumerState<SearchTextField> {
         textInputAction: TextInputAction.search,
         controller: _searchingController,
         onTap: () {
-          widget.ref.read(typingStringProvider.state).state = 'tapping';
+          widget.ref.read(typingStringProvider.notifier).state = 'tapping';
         },
         onChanged: (value) {
           if (value.isNotEmpty) {
-            widget.ref.read(typingStringProvider.state).state = value;
+            widget.ref.read(typingStringProvider.notifier).state = value;
           }
         },
         cursorColor: AppColorStyle.instance.clooney,
@@ -49,7 +51,7 @@ class _SearchTextFieldState extends ConsumerState<SearchTextField> {
               ? null
               : IconButton(
                   onPressed: () {
-                    widget.ref.read(typingStringProvider.state).state = "";
+                    widget.ref.read(typingStringProvider.notifier).state = "";
                     _searchingController.text = "";
                   },
                   icon: Icon(

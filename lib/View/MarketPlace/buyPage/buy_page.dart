@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/components/button/custom_button.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
-import 'package:snack_overflow/View/MarketPlace/homePage/view/home_view.dart';
+
 import 'package:snack_overflow/View/widget/details_bundle_or_single.dart';
 
 import '../../../Core/Base/Provider/add_shop_list.dart';
@@ -51,7 +51,7 @@ class _BuyPAGEState extends ConsumerState<BuyPAGE> {
                               Column(
                                 children: [
                                   Details_bundle_or_single(widget: shopList[index]),
-                                  Divider(
+                                  const Divider(
                                     thickness: 2,
                                   )
                                 ],
@@ -91,7 +91,7 @@ class _BuyPAGEState extends ConsumerState<BuyPAGE> {
                                           ),
                                           ListTile(
                                             minLeadingWidth: 70.w,
-                                            leading: Icon(Icons.credit_card_outlined),
+                                            leading: const Icon(Icons.credit_card_outlined),
                                             title: Text(
                                               "**** **** **** 2505",
                                               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColorStyle.instance.black),

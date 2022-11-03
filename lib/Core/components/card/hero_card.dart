@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Theme/app_color_style.dart';
 import '../../extension/build_extension.dart';
 
+// ignore: must_be_immutable
 class HeroCard extends StatelessWidget {
   bool? isIconVisible;
   final String path;
@@ -27,7 +28,9 @@ class HeroCard extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    colorFilter: ColorFilter.mode(Color.fromARGB(84, 0, 0, 0), BlendMode.colorBurn), fit: BoxFit.cover, image: AssetImage(path))),
+                    colorFilter: const ColorFilter.mode(Color.fromARGB(84, 0, 0, 0), BlendMode.colorBurn),
+                    fit: BoxFit.cover,
+                    image: AssetImage(path))),
             height: 0.23.sh,
           ),
         ),
@@ -45,7 +48,7 @@ class HeroCard extends StatelessWidget {
                             Icons.location_on_outlined,
                             color: AppColorStyle.instance.whitey,
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                     Text(
                       titleText ?? "",
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColorStyle.instance.white),

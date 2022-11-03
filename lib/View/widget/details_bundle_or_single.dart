@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
@@ -6,7 +8,7 @@ import 'package:snack_overflow/View/widget/details.dart';
 import '../../Core/Base/models/base_model_list.dart';
 import '../../Core/Theme/app_color_style.dart';
 
-class Details_bundle_or_single extends StatelessWidget {
+class Details_bundle_or_single extends StatefulWidget {
   const Details_bundle_or_single({
     Key? key,
     required this.widget,
@@ -14,6 +16,11 @@ class Details_bundle_or_single extends StatelessWidget {
 
   final BaseModelList widget;
 
+  @override
+  State<Details_bundle_or_single> createState() => _Details_bundle_or_singleState();
+}
+
+class _Details_bundle_or_singleState extends State<Details_bundle_or_single> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,10 +35,10 @@ class Details_bundle_or_single extends StatelessWidget {
           ),
           width: 140.sm,
           height: 150.sm,
-          child: (widget.topLeftImage == null && widget.imagePath != null)
+          child: (widget.widget.topLeftImage == null && widget.widget.imagePath != null)
               ? Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.imagePath ?? "")),
+                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.widget.imagePath ?? "")),
                     borderRadius: context.buttonRadius,
                   ),
                 )
@@ -46,7 +53,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.topLeftImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.widget.topLeftImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -57,7 +64,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.topRightImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.widget.topRightImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -74,7 +81,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.bottomRightImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.widget.bottomRightImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -85,7 +92,7 @@ class Details_bundle_or_single extends StatelessWidget {
                               padding: context.allPaddingBase,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.bottomLeftImage ?? "")),
+                                  image: DecorationImage(fit: BoxFit.cover, image: AssetImage(widget.widget.bottomLeftImage ?? "")),
                                   borderRadius: context.buttonRadius,
                                 ),
                               ),
@@ -103,20 +110,20 @@ class Details_bundle_or_single extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.title,
+                widget.widget.title,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(color: AppColorStyle.instance.teflon),
               ),
               Text(
-                widget.describe ?? "",
+                widget.widget.describe ?? "",
                 overflow: TextOverflow.clip,
                 style: Theme.of(context).textTheme.labelLarge,
               ),
-              Text("\$${widget.price ?? '12'}"),
-              rate_and_time(widget: widget)
+              Text("\$${widget.widget.price ?? '12'}"),
+              rate_and_time(widget: widget.widget)
             ],
           ),
         ),
-        IconButton(onPressed: (() {}), icon: Icon(Icons.bookmark))
+        // IconButton(onPressed: (() {}), icon: Icon(Icons.bookmark))
       ],
     );
   }

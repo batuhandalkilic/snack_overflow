@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, camel_case_types, library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,7 +60,7 @@ class _DetailsState extends ConsumerState<Details> {
                         ref.read(shopListProvider.notifier).addShopList(widget.currenObject);
                         ScaffoldMessenger.of(context).showSnackBar(detailsSnackBar(widget.currenObject));
                       }),
-                      icon: Icon(Icons.add_shopping_cart_outlined)),
+                      icon: const Icon(Icons.add_shopping_cart_outlined)),
                   context.sizedBoxHeightBoxLow4x,
                   CustomPrimaryIconButton(
                       textColor: AppColorStyle.instance.peach,
@@ -83,12 +83,12 @@ class _DetailsState extends ConsumerState<Details> {
   }
 
   SnackBar detailsSnackBar(BaseModelList currenObject) => SnackBar(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       backgroundColor: AppColorStyle.instance.peach,
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.shopping_cart_outlined),
+          const Icon(Icons.shopping_cart_outlined),
           context.sizedBoxWidthBoxLow,
           Text("${currenObject.title} eklendi"),
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:snack_overflow/Core/Theme/app_color_style.dart';
-import 'package:snack_overflow/Core/extension/build_extension.dart';
+
+import '../../Theme/app_color_style.dart';
+import '../../extension/build_extension.dart';
 
 class CustomPrimaryButton extends StatefulWidget {
   final String description;
@@ -35,6 +36,7 @@ class _CustomPrimaryButtonState extends State<CustomPrimaryButton> {
             borderRadius: context.buttonRadius,
           ),
         ),
+        // ignore: sort_child_properties_last
         child: Text(
           widget.description,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: widget.textColor),

@@ -16,7 +16,7 @@ class AppTheme {
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.black)),
+        iconTheme: const IconThemeData(color: Colors.black)),
     scaffoldBackgroundColor: AppColorStyle.instance.white,
     textTheme: TextTheme(
       displayLarge: AppTextStyle.instance.largeTitle,

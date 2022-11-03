@@ -1,9 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:snack_overflow/Core/Base/models/base_model_user.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
+import 'package:snack_overflow/Core/cache/hive.dart';
 
 import '../../../../Core/Base/models/base_model_list.dart';
-import '../../../../Core/Base/models/carouseWithDetails4Image_model.dart';
+
 import '../../../../Core/components/Carousel/carousel_with_details.dart';
 import '../../../../Core/components/Carousel/carousel_with_details_4Image.dart';
 import '../../../../Core/components/Carousel/large_carousel.dart';
@@ -38,6 +42,7 @@ class _MarketViewState extends MarketPageViewModel {
   }
 
   List<Widget> searchingStatus(String status) {
+    final userId = ref.watch(userIdProvider);
     if (status == "") {
       return [
         context.sizedBoxHeightBoxLow4x,
@@ -61,11 +66,19 @@ class _MarketViewState extends MarketPageViewModel {
           "Recent Searches",
           style: Theme.of(context).textTheme.titleMedium,
         ),
-
-        // Hive aç kullanıcı girince list<String> tut ilk başta yoksa
-        // arama yapılmadı yazdır
-        // ilk arama yapınca hive ile kaydet ve yazdır!
-        // 3 arama doldu => list 0 index son yazılanı koy
+        (ref.read(cacheProvider).getUser(userId ?? "")?.recentSearches ?? []).isEmpty
+            ? const Text("Arama geçmişi yok")
+            : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: ref.watch(cacheProvider).getUser(userId ?? "")?.recentSearches?.length ?? 0,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    leading: const Icon(Icons.watch_later),
+                    title: Text(ref.watch(cacheProvider).getUser(userId ?? "")?.recentSearches![index] ?? "null"),
+                  );
+                },
+              ),
         Text(
           "Suggested",
           style: Theme.of(context).textTheme.titleMedium,
@@ -112,18 +125,31 @@ class _MarketViewState extends MarketPageViewModel {
                     children: [
                       context.sizedBoxHeightBoxLow4x,
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: ((context) => Details(
                                     currenObject: currentModell,
                                   ))));
+
+                          User? aaa = ref.read(cacheProvider).getUser(userId ?? "");
+                          if (aaa!.recentSearches!.length <= 2) {
+                            aaa = aaa.copyWith(recentSearches: [currentModell.title, ...aaa.recentSearches!]);
+                            await ref.read(cacheProvider).putUser(aaa);
+                          } else {
+                            aaa.recentSearches!.removeAt(2);
+                            aaa = aaa.copyWith(recentSearches: [
+                              currentModell.title,
+                              ...aaa.recentSearches!,
+                            ]);
+                            await ref.read(cacheProvider).putUser(aaa);
+                          }
                         },
                         child: Text(
                           currentModell.title,
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColorStyle.instance.gandalf),
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 2,
                       ),
                     ],

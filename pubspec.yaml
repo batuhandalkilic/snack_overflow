@@ -27,19 +27,26 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_size_text: ^3.0.0
   flutter:
     sdk: flutter
-  # State Manangment
+  #State
   flutter_riverpod: ^2.0.2
-  # Responsive, Adaptive
+  #Responsive-Adaptive
   flutter_screenutil: ^5.5.4
-  auto_size_text: ^3.0.0
+  #cache
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  uuid: ^3.0.6
 
 dev_dependencies:
-  flutter_lints: 1.0.4
+  build_runner: ^2.2.1
+  #cache
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
+  hive_generator: ^1.1.3
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
@@ -73,6 +80,5 @@ flutter:
           weight: 700
         - asset: assets/font/Poppins-Semibold.ttf
           weight: 600
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

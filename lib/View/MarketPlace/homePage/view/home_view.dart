@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_firs
+// ignore_for_file: public_member_api_docs, sort_constructors_firs, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +9,7 @@ import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/components/button/user_shoplist_alert_button.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 import 'package:snack_overflow/Core/extension/string_extension.dart';
-
+import 'package:snack_overflow/View/MarketPlace/buyPage/buy_page.dart';
 import '../../../../Core/components/Carousel/carousel_with_details.dart';
 import '../../../../Core/components/Carousel/carousel_with_details_4Image.dart';
 import '../../../../Core/components/Carousel/large_carousel.dart';
@@ -41,7 +41,7 @@ class _HomeViewState extends HomeViewModel {
                   subTitleText: "Günaydın",
                   titleText: "Eskişehir",
                 ),
-                context.sizedBoxHeightBoxLow4x,
+                context.sizedBoxHeightBoxLow3x,
                 Padding(
                   padding: context.horizantalPaddingMedium,
                   child: Column(
@@ -74,15 +74,17 @@ class _HomeViewState extends HomeViewModel {
                         customButtonColor: AppColorStyle.instance.white.withOpacity(0.2),
                         buttonHeight: 60,
                         description: "Check out now",
-                        onPressed: (() {})))
+                        onPressed: (() {
+                          Navigator.push(context, MaterialPageRoute(builder: ((context) => const BuyPAGE())));
+                        })))
                 : ref.watch(orderStatusProvider) == OrderStatus.paid.name
                     ? Positioned(
                         bottom: 0.h,
                         left: isCloseOrderButton ? 8.w : 10000,
                         right: isCloseOrderButton ? 8.w : 10000,
                         child: UserShopListAlertButton(
-                            gradiandColorFirst: Color.fromRGBO(200, 207, 45, 1),
-                            gradiandColorSecond: Color.fromRGBO(176, 191, 79, 1),
+                            gradiandColorFirst: const Color.fromRGBO(200, 207, 45, 1),
+                            gradiandColorSecond: const Color.fromRGBO(176, 191, 79, 1),
                             paidString: "Your order has been placed",
                             iconData: Icons.check_circle_outline,
                             customButtonColor: AppColorStyle.instance.white.withOpacity(0.2),

@@ -24,6 +24,9 @@ extension PaddingExtension on BuildContext {
   //zeroPadding
   EdgeInsets get zeroPadding => EdgeInsets.zero;
 
+  //
+  EdgeInsets get horizantalAndVerticalPaddingMedium => EdgeInsets.symmetric(horizontal: 12.w, vertical: 24.h);
+
   // all
   EdgeInsets get allPaddingBase => EdgeInsets.all(4.h);
   EdgeInsets get allPaddingSmall => EdgeInsets.all(12.h);
@@ -58,6 +61,7 @@ extension SizedBoxExtension on BuildContext {
 
 extension RadiusExtension on BuildContext {
   BorderRadius get buttonRadius => BorderRadius.circular(8.r);
+  BorderRadius get buttonRadiusx2 => BorderRadius.circular(16.r);
 }
 
 extension NavigationExtension on BuildContext {

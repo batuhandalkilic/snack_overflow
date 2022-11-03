@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:snack_overflow/Core/Base/models/base_model_list.dart';
+import '../models/base_model_list.dart';
 
 final shopListProvider = StateNotifierProvider<ShopList, List<BaseModelList>>((ref) {
   return ShopList();

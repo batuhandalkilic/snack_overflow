@@ -1,9 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../Core/Base/models/base_model_list.dart';
+import '../../../../Core/Base/models/base_model_user.dart';
 import '../../../../Core/Base/models/carouseWithDetails4Image_model.dart';
 import '../../../../Core/Base/models/carouselWithDetails_model.dart';
 import '../../../../Core/Base/models/large_carousel_model.dart';
+import '../../../../Core/cache/hive.dart';
 import '../../../../Core/extension/string_extension.dart';
 
 import '../view/market_view.dart';
@@ -138,4 +140,18 @@ abstract class MarketPageViewModel extends ConsumerState<MarketView> {
 
 final typingStringProvider = StateProvider<String>((ref) {
   return "";
+});
+
+final userIdProvider = Provider<String?>((ref) {
+  List<String>? usersIdList = ref.read(cacheProvider).getKeys();
+  List<User>? userList = ref.read(cacheProvider).getValues();
+  String? isUserLogingBool;
+  for (var id in usersIdList!) {
+    for (var user in userList!) {
+      if (user.id == id) {
+        isUserLogingBool = user.id;
+      }
+    }
+  }
+  return isUserLogingBool;
 });

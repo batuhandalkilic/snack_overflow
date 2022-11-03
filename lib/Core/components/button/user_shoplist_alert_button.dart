@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
 import 'package:snack_overflow/Core/extension/build_extension.dart';
 
 import '../../Base/Provider/add_shop_list.dart';
 
+// ignore: must_be_immutable
 class UserShopListAlertButton extends ConsumerStatefulWidget {
   final String description;
   final double? buttonHeight;
@@ -44,8 +44,8 @@ class _UserShopListAlertButton extends ConsumerState<UserShopListAlertButton> {
       decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              widget.gradiandColorFirst ?? Color.fromRGBO(255, 135, 84, 1),
-              widget.gradiandColorSecond ?? Color.fromRGBO(246, 152, 51, 1),
+              widget.gradiandColorFirst ?? const Color.fromRGBO(255, 135, 84, 1),
+              widget.gradiandColorSecond ?? const Color.fromRGBO(246, 152, 51, 1),
             ],
           ),
           borderRadius: context.buttonRadius),
@@ -83,6 +83,7 @@ class _UserShopListAlertButton extends ConsumerState<UserShopListAlertButton> {
                   borderRadius: context.buttonRadius,
                 ),
               ),
+              onPressed: widget.onPressed,
               child: Padding(
                 padding: context.allPaddingMedium,
                 child: Text(
@@ -90,7 +91,6 @@ class _UserShopListAlertButton extends ConsumerState<UserShopListAlertButton> {
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: widget.textColor),
                 ),
               ),
-              onPressed: widget.onPressed,
             ),
           ],
         ),

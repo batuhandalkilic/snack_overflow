@@ -6,15 +6,15 @@ final orderStatusProvider = StateProvider<String>((ref) {
 
 enum OrderStatus { waitForPayment, paid }
 
-final paidContainerClosedProvider = StateNotifierProvider<aaa, bool?>((ref) {
-  return aaa();
+final paidContainerClosedProvider = StateNotifierProvider<PaidContainerClosed, bool?>((ref) {
+  return PaidContainerClosed();
 });
 
-class aaa extends StateNotifier<bool?> {
-  aaa() : super(true);
+class PaidContainerClosed extends StateNotifier<bool?> {
+  PaidContainerClosed() : super(true);
 
   Future<void> _delayed() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
   }
 
   Future<bool?> onChangeBool() async {
@@ -27,5 +27,6 @@ class aaa extends StateNotifier<bool?> {
       await _delayed();
       state = false;
     }
+    return null;
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/Theme/app_color_style.dart';
@@ -21,6 +23,7 @@ class _OnboradinViewState extends OnboardingViewModel {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -34,14 +37,11 @@ class _OnboradinViewState extends OnboardingViewModel {
                   buttonHeight: 56.h,
                   customButtonColor: AppColorStyle.instance.peach,
                   onPressed: () {
-                    // kullanıcı bir kere görecek basınca görüldü diye kaydetmeyi unutma
-                    // shared ya da hive kullan
                     Navigator.of(context).push(PageRouteBuilder(
                         transitionsBuilder: (context, animation, secondaryAnimation, child) {
                           const begin = Offset(0.0, 1.0);
                           const end = Offset.zero;
                           const curve = Curves.ease;
-
                           final tween = Tween(begin: begin, end: end);
                           final curvedAnimation = CurvedAnimation(
                             parent: animation,

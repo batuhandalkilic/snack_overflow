@@ -17,7 +17,7 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300.h,
+      height: 280.h,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: carouselWithDetailsModel.length,
@@ -26,7 +26,7 @@ class CarouselWithDetails<T extends CarouselWithDetailsModel> extends StatelessW
               child: Container(
                 padding: context.horizantalPaddingSmall,
                 width: smallImageMode ? 190.w : 290.w,
-                height: 300.h, //
+                height: 280.h, //
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

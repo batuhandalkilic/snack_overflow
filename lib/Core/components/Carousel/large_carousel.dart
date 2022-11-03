@@ -9,6 +9,7 @@ import '../../Theme/app_color_style.dart';
 
 // ignore: must_be_immutable
 // vertical için false değeri ver!
+// ignore: must_be_immutable
 class LargeCarousel<T extends LargeCarouselModel> extends StatelessWidget {
   bool isDirection;
   final List<T> objectList;
@@ -21,7 +22,7 @@ class LargeCarousel<T extends LargeCarouselModel> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: isDirection == true ? 202.h : null,
+      height: isDirection == true ? 200.h : null,
       child: ListView.builder(
           // dikeyde ana ekran hareket edebilsin diye
           physics: isDirection == true ? null : const NeverScrollableScrollPhysics(),

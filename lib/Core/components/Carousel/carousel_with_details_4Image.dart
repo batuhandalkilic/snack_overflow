@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snack_overflow/Core/Base/models/base_model_list.dart';
@@ -7,6 +7,7 @@ import '../../Base/models/carouseWithDetails4Image_model.dart';
 import '../../Theme/app_color_style.dart';
 import '../../extension/build_extension.dart';
 
+// ignore: must_be_immutable
 class CarouselWithDetails4Image<T extends BaseModelList> extends StatefulWidget {
   T? currenObject;
   List<CarouseWithDetails4Image_model>? list;
@@ -24,7 +25,7 @@ class _CarouselWithDetails4ImageState extends State<CarouselWithDetails4Image> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300.h,
+      height: 250.h,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: widget.list?.length ?? 0,
